@@ -59,7 +59,7 @@ jobs:
         with:
           context: ./backend/
           push: true
-          tags: grosella/kittygram_backend:latest 
+          tags: grosella/taski_backend:latest 
   frontend_tests:
     runs-on: ubuntu-latest
 
@@ -98,7 +98,7 @@ jobs:
         with:
           context: ./frontend/
           push: true
-          tags: grosella/kittygram_frontend:latest
+          tags: grosella/taski_frontend:latest
   build_gateway_and_push_to_docker_hub:
     name: Push gateway Docker image to DockerHub
     runs-on: ubuntu-latest
@@ -117,7 +117,7 @@ jobs:
         with:
           context: ./nginx/
           push: true
-          tags: grosella/kittygram_gateway:latest
+          tags: grosella/taski_gateway:latest
   deploy:
     runs-on: ubuntu-latest
     needs: 
@@ -135,7 +135,7 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         source: "docker-compose.production.yml"
-        target: "kittygram"
+        target: "taski"
     - name: Executing remote ssh commands to deploy
       uses: appleboy/ssh-action@master
       with:
@@ -144,7 +144,7 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         script: |
-          cd kittygram
+          cd taski
           sudo docker compose -f docker-compose.production.yml pull
           sudo docker compose -f docker-compose.production.yml down
           sudo docker compose -f docker-compose.production.yml up -d
