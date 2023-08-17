@@ -1,4 +1,3 @@
-# backend/api/tests.py
 from api import models
 
 from django.test import Client, TestCase
