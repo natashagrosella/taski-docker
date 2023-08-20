@@ -12,7 +12,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'None')
 
 DEBUG = (os.getenv('DEBUG', 'false').lower() == 'true')
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'https://yandexpracticumtest.ddns.net', '158.160.70.109']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'yandexpracticumtest.ddns.net', '158.160.70.109']
 
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
